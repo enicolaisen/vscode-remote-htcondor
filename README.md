@@ -32,11 +32,11 @@ The scripts will be installed in `~/.vscode-remote-htcondor`
 
 ## Usage
 
-After you have installed the scripts, and if you followed the instructions, you should be able to connect to a compute node directly from the VS Code remote explorer, by connecting to the special host you've created. If no job is running, the scripts will automatically queue a job and connect to it as soon as it starts running. If a job is already running, it will connect to it directly.
+After you have ran the installation script, and if you followed the instructions, you should be able to connect to a compute node directly from the VS Code remote explorer, by connecting to the special host you've created. If no job is running, this tool will automatically queue a job and connect to it as soon as it starts running. If a job is already running, it will connect to it directly.
 
 ## How it works
 
-Instead of connecting to the head/login node of the cluster and running the vscode-server process there, this scripts are meant to use a job in a compute node as the remote host for VS Code. This allows you to use the full power of the compute node, and not be limited by the resources of the login node, while also keeping the login node free from any long-running processes, which is usually a requirement in most HTCondor clusters.
+Instead of connecting to the login/head node of the cluster and running the vscode-server process there, these scripts are meant to use a job in a compute node (also called cluster node in the INM-7 docs) as the remote host for VS Code. This allows you to use the full power of the compute node, and not be limited by the resources of the login node, while also keeping the login node free from any long-running processes, which is usually a requirement in most HTCondor clusters.
 
 The scripts work by tweaking the SSH configuration for the special host you created. Instead of directly connecting to the remote host, it will run the `vscode-remote` script on the login node. This script will make sure that there is a job running and connect to it.
 
